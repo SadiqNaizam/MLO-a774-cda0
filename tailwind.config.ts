@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 export default {
 	darkMode: ["class"],
@@ -52,21 +53,25 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
-				}
+        // Direct PRD color palette additions for utility classes
+        prd: {
+          background: '#000000',
+          surface: '#1C1E29',
+          primaryText: '#FFFFFF',
+          secondaryText: '#AAAAAA',
+          accentGreen: '#17D4AA',
+          accentTeal: '#1EC1CE',
+          accentRed: '#F66D6D',
+        }
 			},
+      fontFamily: {
+        sans: ['Roboto', ...defaultTheme.fontFamily.sans],
+      },
 			borderRadius: {
-				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+        // Existing structure preserved. CSS --radius is adjusted so that 'md' results in 0.5rem as per PRD.
+				lg: 'var(--radius)', // Will be 0.625rem (10px)
+				md: 'calc(var(--radius) - 2px)', // Will be 0.625rem - 2px = 8px (0.5rem) - PRD default 'rounded-md'
+				sm: 'calc(var(--radius) - 4px)' // Will be 0.625rem - 4px = 6px (0.375rem)
 			},
 			keyframes: {
 				'accordion-down': {
